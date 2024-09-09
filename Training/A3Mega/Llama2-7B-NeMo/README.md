@@ -4,7 +4,7 @@ This README provides step-by-step instructions for setting up and running the Ll
 
 ## Prerequisites
 
-- [Google Cloud Platform (GCP) account with necessary permissions](https://console.cloud.google.com/?hl=en-au)
+- [Google Cloud Platform account with necessary permissions](https://console.cloud.google.com/?hl=en-au)
 - [Gcloud CLI tool installed](https://cloud.google.com/sdk/docs/install)
 - [Kubectl installed](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubectl#install_kubectl)
 - [Gke-gcloud-auth-plugin installed](https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke)
