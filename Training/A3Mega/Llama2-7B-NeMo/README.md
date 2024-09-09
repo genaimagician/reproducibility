@@ -5,9 +5,9 @@ This README provides step-by-step instructions for setting up and running the Ll
 ## Prerequisites
 
 - Google Cloud Platform (GCP) account with necessary permissions
-- [`gcloud` CLI tool installed](https://cloud.google.com/sdk/docs/install)
-- [`kubectl` installed](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubectl#install_kubectl)
-- [`gke-gcloud-auth-plugin` installed](https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke)
+- [gcloud CLI tool installed](https://cloud.google.com/sdk/docs/install)
+- [kubectl installed](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubectl#install_kubectl)
+- [gke-gcloud-auth-plugin installed](https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke)
 - [Docker installed (if building the image locally)](https://docs.docker.com/engine/install/)
 
 ## Step 1: Clone the Repository
