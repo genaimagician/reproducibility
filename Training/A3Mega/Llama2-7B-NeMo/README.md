@@ -5,9 +5,10 @@ This README provides step-by-step instructions for setting up and running the Ll
 ## Prerequisites
 
 - Google Cloud Platform (GCP) account with necessary permissions
-- `gcloud` CLI tool installed
-- `kubectl` installed
-- Docker installed (if building the image locally)
+- [`gcloud` CLI tool installed](https://cloud.google.com/sdk/docs/install)
+- [`kubectl` installed](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubectl#install_kubectl)
+- [`gke-gcloud-auth-plugin` installed](https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke)
+- [Docker installed (if building the image locally)](https://docs.docker.com/engine/install/)
 
 ## Step 1: Clone the Repository
 
@@ -77,7 +78,7 @@ Example:
 gcloud auth configure-docker us-docker.pkg.dev
 ```
 
-This step allows Docker to push and pull images from your Google Cloud Container Registry.
+This step allows Docker to push and pull images from your Google Cloud Container Registry. If you are not familiar with docker container registry, you can [read more here.](https://cloud.google.com/artifact-registry/docs/docker/authentication#standalone-helper)
 
 ## Step 6: Build and Push the Docker Image
 
@@ -102,7 +103,7 @@ docker push us-east4-docker.pkg.dev/supercomputer-testing/reproducibility/nemo_t
 cd ..
 ```
 
-These steps create a Docker image with all the necessary dependencies and push it to your container registry for later use in the Kubernetes cluster.
+These steps create a Docker image with all the necessary dependencies and push it to your container registry for later use in the Kubernetes cluster. It will take a while to build the docker image. Please make sure you have enough space left on device to build the docker image.
 
 ## Step 7: Install Helm
 
@@ -132,7 +133,7 @@ vi helm-context/values.yaml
 
 Make the following changes:
 - Modify the `workload.image` string to match the Docker image you built earlier.
-- Update the `workload.gcsBucketForDataCataPath` to point to an existing Google Cloud Storage bucket in the same region as your cluster.
+- Update the `workload.gcsBucketForDataCataPath` to point to an existing Google Cloud Storage bucket in the same region as your cluster. Or [create a new bucket](https://cloud.google.com/storage/docs/creating-buckets#console) and use it. 
 - Optionally, adjust settings like the number of GPUs or other workload-specific parameters.
 
 ### Update Workload Configuration
@@ -140,10 +141,10 @@ Make the following changes:
 Edit the workload configuration file:
 
 ```bash
-vi nemo-configurations/llama2-7b-16gpus-bf16.yaml
+vi helm-context/nemo-configurations/llama2-7b-16gpus-bf16.yaml
 ```
 
-Adjust any model-specific parameters as needed.
+Adjust any model-specific parameters if needed.
 
 ### Set the Configuration File
 
@@ -152,6 +153,7 @@ Create a `selected-configuration.yaml` file in the `helm-context` directory:
 ```bash
 cd helm-context
 cp nemo-configurations/llama2-7b-16gpus-bf16.yaml ./selected-configuration.yaml
+cd ..
 ```
 
 This step is crucial for the workflow to function correctly.
@@ -181,12 +183,22 @@ To find the name of your training pod:
 kubectl get pods | grep "<some_part_of_username_workload_job_name>"
 ```
 
+Example:
+```bash
+kubectl get pods | grep "stingram-llama2-7b-nemo"
+```
+
 ### Check Job Status
 
 To see the overall job status:
 
 ```bash
 kubectl get jobs | grep "<some_part_of_username_workload_job_name>"
+```
+
+Example:
+```bash
+kubectl get jobs | grep "stingram-llama2-7b-nemo"
 ```
 
 ### View Logs
@@ -225,5 +237,3 @@ If you encounter issues:
 ## Conclusion
 
 This README provides a detailed guide for setting up and running Llama2-7B NeMo training on an A3Mega cluster. Remember to clean up your resources after training to avoid unnecessary costs. If you have any questions or encounter issues, please refer to the project's documentation or seek support from the maintainers.
-detailed-readme.md
-Displaying detailed-readme.md.
