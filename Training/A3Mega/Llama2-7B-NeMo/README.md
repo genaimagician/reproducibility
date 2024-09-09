@@ -1,26 +1,4 @@
-Conversation opened. 2 messages. 1 message unread.
-
-Skip to content
-Using Google.com Mail with screen readers
-1 of 119
-prompt
-External
-Inbox
-  
-
-Lei Pan
-10:09 PM (16 minutes ago)
-this read me file in the public repo is not very detailed and skipped the reasons behind many steps. i followed it to launch the image in the cluster. it worked
-
-Lei Pan New message
-Attachments
-10:14 PM (12 minutes ago)
-to me
-
-
- One attachment
-  •  Scanned by Gmail
-# Detailed Instructions for Training Llama2-7B NeMo on A3Mega
+# Instructions for Training Llama2-7B NeMo on A3Mega
 
 This README provides step-by-step instructions for setting up and running the Llama2-7B NeMo model training on an A3Mega cluster. It includes explanations for each step to help you understand the process better.
 
